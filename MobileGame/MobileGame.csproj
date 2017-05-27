@@ -78,7 +78,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Colby\Scripts\AxisScript.cs" />
+    <Compile Include="Assets\Colby\Scripts\CameraBehavor.cs" />
     <Compile Include="Assets\Colby\Scripts\GyroControl.cs" />
+    <Compile Include="Assets\Colby\Scripts\GyroControl2.cs" />
     <Compile Include="Assets\Colby\Scripts\ScreenRotation.cs" />
     <Compile Include="Assets\Colby\Scripts\UIButtonFunctions.cs" />
     <Compile Include="Assets\Luke_Test_Folder\Generator\PuzzleGenerationBehavior.cs" />
