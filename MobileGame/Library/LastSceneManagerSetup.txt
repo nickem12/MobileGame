@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/NickTestScene.unity
+  isLoaded: 1
+  isActive: 1
