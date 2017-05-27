@@ -46,7 +46,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Colby\Scripts\GyroControl.cs" />
+     <Compile Include="Assets\Colby\Scripts\ScreenRotation.cs" />
+     <Compile Include="Assets\Colby\Scripts\UIButtonFunctions.cs" />
      <Compile Include="Assets\Luke_Test_Folder\Generator\PuzzleGenerationBehavior.cs" />
+     <Compile Include="Assets\NickTestStuff\ChangeCubeState.cs" />
+     <Compile Include="Assets\NickTestStuff\CubeData.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/dev/Unity 5.3.4/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
