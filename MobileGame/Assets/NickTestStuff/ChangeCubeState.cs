@@ -8,6 +8,8 @@ public class ChangeCubeState : MonoBehaviour {
     RaycastHit objectHit;
 
     public Material mat;
+
+    GameObject currentCube;
 	// Use this for initialization
 	void Start () {
 		
@@ -23,15 +25,48 @@ public class ChangeCubeState : MonoBehaviour {
 
             if (Physics.Raycast(touchRay, out objectHit, Mathf.Infinity))
             {
-                Debug.Log("Hit Something");
+                if(objectHit.transform.GetComponent<CubeData>().cubeState == CubeState.Passable)
+                {
+                    GetCurrentCube();
+                    if(Adjacent(objectHit.transform.gameObject))
+                    {
+                        Debug.Log("Hit Something");
 
-                Debug.Log(objectHit.transform.tag);
+                        Debug.Log(objectHit.transform.tag);
 
-                objectHit.transform.gameObject.GetComponent<Renderer>().material = mat;
+                        objectHit.transform.gameObject.GetComponent<Renderer>().material = mat;
+
+                        objectHit.transform.GetComponent<CubeData>().SetCubeState(CubeState.Current);
+
+                        currentCube.GetComponent<CubeData>().SetCubeState(CubeState.Passed);
+                    }
+                }
+            }
+        } 
+	}
+
+    void GetCurrentCube()
+    {
+        GameObject[] cubes = GameObject.FindGameObjectsWithTag("Cube");
+
+        for(int counter = 0; counter<cubes.Length;counter++)
+        {
+            if(cubes[counter].GetComponent<CubeData>().cubeState == CubeState.Current)
+            {
+                currentCube = cubes[counter];
+                return;
             }
         }
-       
-
-        
-	}
+    }
+    bool Adjacent(GameObject test)
+    {
+        for(int counter = 0;counter<currentCube.GetComponent<CubeData>().adjacentCubes.Count;counter++)
+        {
+            if(test == currentCube.GetComponent<CubeData>().adjacentCubes[counter])
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }

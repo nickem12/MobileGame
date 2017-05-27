@@ -91,8 +91,9 @@ public class PuzzleGenerationBehavior : MonoBehaviour {
 	private void PickStart(){
 		GameObject[] Cubes = GameObject.FindGameObjectsWithTag("Cube");
 		GameObject ChosenCube = Cubes[Random.Range(0, Cubes.Length - 1)];
-		Instantiate(GetUsed(), ChosenCube.transform.position, 	new Quaternion(), this.transform);				//Up cube
-	}
+		Instantiate(GetUsed(), ChosenCube.transform.position, 	new Quaternion(), this.transform);              //Up cube
+        Destroy(ChosenCube);
+    }
 
 	private GameObject GenerateCube(){
 			int Type = Random.Range(1,3);																		//Generate what type of block we want
