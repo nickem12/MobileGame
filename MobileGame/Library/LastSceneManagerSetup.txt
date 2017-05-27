@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Luke_Test_Folder/Generator/Generator_Test.unity
+- path: Assets/NickTestStuff/NickTestScene.unity
   isLoaded: 1
   isActive: 1
