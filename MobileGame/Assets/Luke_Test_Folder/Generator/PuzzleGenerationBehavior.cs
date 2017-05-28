@@ -19,7 +19,7 @@ public class PuzzleGenerationBehavior : MonoBehaviour {
 
     
 	void Start () {
-		GeneratePuzzle(Seed);																			//Generate a level
+		GeneratePuzzle(GenerateSeed());																			//Generate a level
 	}
 	
 
