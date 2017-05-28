@@ -1,8 +1,9 @@
-﻿<Properties StartupItem="Assembly-CSharp.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Luke_Test_Folder\Generator\PuzzleGenerationBehavior.cs">
+﻿<Properties StartupItem="MobileGame.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Colby\Scripts\GyroControl.cs">
     <Files>
       <File FileName="Assets\Luke_Test_Folder\Generator\PuzzleGenerationBehavior.cs" Line="17" Column="36" />
+      <File FileName="Assets\Colby\Scripts\GyroControl.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
