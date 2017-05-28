@@ -1,9 +1,11 @@
-﻿<Properties StartupItem="MobileGame.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Colby\Scripts\GyroControl.cs">
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Decor_Generation.cs">
     <Files>
-      <File FileName="Assets\Luke_Test_Folder\Generator\PuzzleGenerationBehavior.cs" Line="17" Column="36" />
-      <File FileName="Assets\Colby\Scripts\GyroControl.cs" Line="1" Column="1" />
+      <File FileName="Assets\Luke_Test_Folder\Generator\PuzzleGenerationBehavior.cs" Line="85" Column="133" />
+      <File FileName="Assets\Luke_Test_Folder\Generator\Blocks2\myCellShader.shader" Line="62" Column="2" />
+      <File FileName="Assets\Decor_Generation.cs" Line="51" Column="11" />
+      <File FileName="Assets\NickTestStuff\CubeData.cs" Line="36" Column="36" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

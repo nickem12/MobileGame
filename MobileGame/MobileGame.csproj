@@ -76,12 +76,6 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Common">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Colby\Scripts\AxisScript.cs" />
@@ -94,6 +88,11 @@
     <Compile Include="Assets\Luke_Test_Folder\Generator\PuzzleGenerationBehavior.cs" />
     <Compile Include="Assets\NickTestStuff\ChangeCubeState.cs" />
     <Compile Include="Assets\NickTestStuff\CubeData.cs" />
+    <Compile Include="Assets\NickTestStuff\GameManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Luke_Test_Folder\Generator\Blocks2\Cell_Shader.shader" />
+    <None Include="Assets\Luke_Test_Folder\Generator\Blocks2\myCellShader.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

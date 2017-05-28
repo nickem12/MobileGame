@@ -5,15 +5,16 @@ using UnityEngine;
 public enum CubeState { Current, Passable, Unpassable, Passed };
 
 public class CubeData : MonoBehaviour {
-    [SerializeField]
+    
     public List<GameObject> adjacentCubes = new List<GameObject>();
     [SerializeField]
     public CubeState cubeState;
     [SerializeField]
     int num;
+    public float CubeLength;
     bool setAdjacent = true;
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 
         string name = this.name;
 
@@ -52,7 +53,7 @@ public class CubeData : MonoBehaviour {
 
         for(int counter = 0;counter<cube.Length;counter++)
         {
-            if(Vector3.Distance(cube[counter].transform.position,this.transform.position)<= 1 && cube[counter].gameObject != this.gameObject)
+			if(Vector3.Distance(cube[counter].transform.position,this.transform.position)<= CubeLength && cube[counter].gameObject != this.gameObject)
             {
                 adjacentCubes.Add(cube[counter]);
             }
