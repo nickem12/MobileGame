@@ -11,6 +11,8 @@ public class ChangeCubeState : MonoBehaviour {
 
     GameObject currentCube;
     GameObject gameManager;
+    public AudioSource Space_Boop;
+
 	// Use this for initialization
 	void Start () {
 
@@ -44,6 +46,8 @@ public class ChangeCubeState : MonoBehaviour {
                         currentCube.GetComponent<CubeData>().SetCubeState(CubeState.Passed);
 
                         gameManager.GetComponent<GameManager>().cubeRemaining-= 1;
+
+                        
                     }
                 }
             }
@@ -58,6 +62,7 @@ public class ChangeCubeState : MonoBehaviour {
         {
             if(cubes[counter].GetComponent<CubeData>().cubeState == CubeState.Current)
             {
+                Space_Boop.Play();
                 currentCube = cubes[counter];
                 return;
             }

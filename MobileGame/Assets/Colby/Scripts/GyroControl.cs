@@ -76,8 +76,9 @@ public class GyroControl : MonoBehaviour
 
             //if (Cube.transform.eulerAngles.y < 267f)
             //{
-            if (gyro.attitude.x > .3f)
+            if (gyro.attitude.x > .1f)
             {
+              
                 // Debug.Log("Cube y rotating right ");
                 Cube.transform.Rotate(Vector3.up * gyro.attitude.x * Time.deltaTime * speed);
                 // theCamera.transform.RotateAround(Vector3.zero, Vector3.up, -gyro.attitude.x * Time.deltaTime * speed);
@@ -91,7 +92,7 @@ public class GyroControl : MonoBehaviour
             /// if (Cube.transform.eulerAngles.y > 3f)
             /// {
 
-            if (gyro.attitude.x < -.3f)
+            if (gyro.attitude.x < -.1f)
             {
                 // Debug.Log("Cube y rotating left ");
                 Cube.transform.Rotate(Vector3.up * gyro.attitude.x * Time.deltaTime * speed);
@@ -105,11 +106,11 @@ public class GyroControl : MonoBehaviour
 
             if (ourAngle < 87f)
             {
-                if (gyro.attitude.y > .1f)
+                if (gyro.attitude.y > .2f)
                 {
                     ourAngle += gyro.attitude.y * Time.deltaTime * verticalSpeed;
 
-                    Debug.Log("ourAngle " + ourAngle);
+                    Debug.Log("Positive y");
                     // Debug.Log("Camera roation x going up " + theCamera.transform.eulerAngles.x);
                     theCamera.transform.RotateAround(Vector3.zero, Vector3.right, gyro.attitude.y * Time.deltaTime * verticalSpeed);
                     theCamera.transform.LookAt(Vector3.zero);
@@ -123,7 +124,7 @@ public class GyroControl : MonoBehaviour
                 {
                     ourAngle += gyro.attitude.y * Time.deltaTime * verticalSpeed;
 
-                    Debug.Log("ourAngle " + ourAngle);
+                    Debug.Log("Negative y");
                     // Debug.Log("Camera roation x going down " + theCamera.transform.eulerAngles.x);
                     theCamera.transform.RotateAround(Vector3.zero, Vector3.right, gyro.attitude.y * Time.deltaTime * verticalSpeed);
                     theCamera.transform.LookAt(Vector3.zero);
