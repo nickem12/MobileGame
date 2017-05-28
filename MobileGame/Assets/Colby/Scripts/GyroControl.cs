@@ -28,7 +28,7 @@ public class GyroControl : MonoBehaviour
 
         ourForwardVec = new Vector3(0, 0, 1);
 
-        gyroEnabled = EnableGyro();
+        //gyroEnabled = EnableGyro();
 
         Debug.Log(gyroEnabled);
 
@@ -41,7 +41,7 @@ public class GyroControl : MonoBehaviour
         {
             gyro = Input.gyro;
             gyro.enabled = true;
-
+            
             rotation = new Quaternion(0, 0, 1, 0);
 
             Debug.Log("gyro is enabled");

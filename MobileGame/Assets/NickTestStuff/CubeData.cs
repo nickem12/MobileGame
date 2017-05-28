@@ -13,6 +13,7 @@ public class CubeData : MonoBehaviour {
     int num;
     public float CubeLength;
     bool setAdjacent = true;
+    public bool start = false;
 	// Use this for initialization
 	void Awake () {
 
@@ -20,17 +21,18 @@ public class CubeData : MonoBehaviour {
 
         switch(name)
         {
-            case "Used(Clone)":
+            case "block_Used(Clone)":
                 SetCubeState(CubeState.Current);
+                start = true;
                 break;
-            case "Unused(Clone)":
+            case "block_Unused(Clone)":
                 SetCubeState(CubeState.Passable);
                 break;
-            case "Impassable(Clone)":
+            case "block_Impassible(Clone)":
                 SetCubeState(CubeState.Unpassable);
                 break;
         }
-        num = adjacentCubes.Count;
+        
 	}
 	
 	// Update is called once per frame
@@ -39,6 +41,7 @@ public class CubeData : MonoBehaviour {
         {
             SetAdjacentCubes();
             setAdjacent = false;
+            num = adjacentCubes.Count;
         }
 	}
 

@@ -24,19 +24,20 @@ public class ChangeCubeState : MonoBehaviour {
         if(Input.touchCount>0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             touchRay = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
-
+            Debug.Log("Cast Ray");
             if (Physics.Raycast(touchRay, out objectHit, Mathf.Infinity))
             {
                 if(objectHit.transform.GetComponent<CubeData>().cubeState == CubeState.Passable)
                 {
+                    Debug.Log("Hit Passable object.");
                     GetCurrentCube();
                     if(Adjacent(objectHit.transform.gameObject))
                     {
-                        Debug.Log("Hit Something");
+                        Debug.Log("Hit Something adjacent to current cube.");
 
                         Debug.Log(objectHit.transform.tag);
 
-                        objectHit.transform.gameObject.GetComponent<Renderer>().material = mat;
+                        objectHit.transform.GetChild(0).gameObject.GetComponent<Renderer>().material = mat;
 
                         objectHit.transform.GetComponent<CubeData>().SetCubeState(CubeState.Current);
 
