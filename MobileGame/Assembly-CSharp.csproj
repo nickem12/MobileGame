@@ -55,6 +55,8 @@
      <Compile Include="Assets\Luke_Test_Folder\Generator\PuzzleGenerationBehavior.cs" />
      <Compile Include="Assets\NickTestStuff\ChangeCubeState.cs" />
      <Compile Include="Assets\NickTestStuff\CubeData.cs" />
+     <None Include="Assets\Luke_Test_Folder\Generator\Blocks2\myCellShader.shader" />
+     <None Include="Assets\Luke_Test_Folder\Generator\Blocks2\Cell_Shader.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/dev/Unity 5.3.4/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

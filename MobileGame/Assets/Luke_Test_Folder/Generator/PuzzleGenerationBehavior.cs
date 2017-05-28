@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PuzzleGenerationBehavior : MonoBehaviour {
 
+	public int Impassible_Likelyhood;
+
 	public GameObject[] ImpassableBlocks;
 	public GameObject[] UnusedBlocks;
 	public GameObject[] UsedBlocks;
@@ -96,14 +98,13 @@ public class PuzzleGenerationBehavior : MonoBehaviour {
     }
 
 	private GameObject GenerateCube(){
-			int Type = Random.Range(1,3);																		//Generate what type of block we want
-		switch(Type){																							//Switch on the type
-			case 1 :																							//If 1 then create an impassable block
-				return ImpassableBlocks[Random.Range(0, ImpassableBlocks.Length - 1)];
-				break;
-			case 2 :																							//If 2 the create an unused block
-				return UnusedBlocks[Random.Range(0, UnusedBlocks.Length - 1)]; 
-				break;
+		int Type = Random.Range(1,11);																		//Generate what type of block we want
+
+		if(Type <= Impassible_Likelyhood){
+			return ImpassableBlocks[Random.Range(0, ImpassableBlocks.Length - 1)];
+		}
+		else{
+			return UnusedBlocks[Random.Range(0, UnusedBlocks.Length - 1)]; 
 		}
 		return null;
 	}
