@@ -13,6 +13,7 @@ public class CubeData : MonoBehaviour {
     int num;
     public float CubeLength;
     bool setAdjacent = true;
+    public bool start = false;
 	// Use this for initialization
 	void Awake () {
 
@@ -22,6 +23,7 @@ public class CubeData : MonoBehaviour {
         {
             case "block_Used(Clone)":
                 SetCubeState(CubeState.Current);
+                start = true;
                 break;
             case "block_Unused(Clone)":
                 SetCubeState(CubeState.Passable);
