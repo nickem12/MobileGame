@@ -10,9 +10,11 @@ public class ChangeCubeState : MonoBehaviour {
     public Material mat;
 
     GameObject currentCube;
+    GameObject gameManager;
 	// Use this for initialization
 	void Start () {
-		
+
+        gameManager = GameObject.FindGameObjectWithTag("GameManager");
 	}
 	
 	// Update is called once per frame
@@ -39,6 +41,8 @@ public class ChangeCubeState : MonoBehaviour {
                         objectHit.transform.GetComponent<CubeData>().SetCubeState(CubeState.Current);
 
                         currentCube.GetComponent<CubeData>().SetCubeState(CubeState.Passed);
+
+                        gameManager.GetComponent<GameManager>().cubeRemaining-= 1;
                     }
                 }
             }
