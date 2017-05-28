@@ -6,6 +6,7 @@ public class UIButtonFunctions : MonoBehaviour {
 
     private GameObject theCanvas;
     private GameObject lockingCanvas;
+    private GameObject RestartButtonCanvas;
     private GameObject theCamera;
     public GameObject gyroControls;
     private Quaternion holdRotation;
@@ -25,6 +26,7 @@ public class UIButtonFunctions : MonoBehaviour {
         lockingCanvas = GameObject.FindGameObjectWithTag("LockingCanvas");
         GyroControls = GameObject.FindGameObjectWithTag("GyroControls");
         LogoPanel = GameObject.FindGameObjectWithTag("LogoPanel");
+        RestartButtonCanvas = GameObject.FindGameObjectWithTag("RestartButtonCanvas");
         startingPos = theCamera.transform.position;
         endPos = new Vector3(0f, 0f, -22f);
     }
@@ -50,6 +52,7 @@ public class UIButtonFunctions : MonoBehaviour {
         moveCameraTrigger = true;
         startedGame = true;
         LogoPanel.GetComponent<LogoAnimation>().TriggerFloatUp();
+        RestartButtonCanvas.GetComponent<Canvas>().enabled = true;
     }
 
     public void MoveCamera()
