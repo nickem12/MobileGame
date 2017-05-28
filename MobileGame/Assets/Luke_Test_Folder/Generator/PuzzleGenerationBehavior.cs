@@ -13,10 +13,11 @@ public class PuzzleGenerationBehavior : MonoBehaviour {
 	public float BlockLength;
 	public bool DEBUG;
 
+    public int Seed;
 
 
 	void Start () {
-		GeneratePuzzle(GenerateSeed());																			//Generate a level
+		GeneratePuzzle(Seed);																			//Generate a level
 	}
 	
 
@@ -41,59 +42,59 @@ public class PuzzleGenerationBehavior : MonoBehaviour {
 	}
 
 	private void CreateCentres(){
-		Instantiate(GenerateCube(), new Vector3(0,1 * BlockLength,0), 	new Quaternion(), this.transform);										//Up cube
-		Instantiate(GenerateCube(), new Vector3(0,-1 * BlockLength,0), 	new Quaternion(), this.transform);										//Down cube
+		Instantiate(GenerateCube(), new Vector3(0,1 * BlockLength,0), 	Quaternion.identity, this.transform);										//Up cube
+		Instantiate(GenerateCube(), new Vector3(0,-1 * BlockLength,0),  Quaternion.identity, this.transform);										//Down cube
 
-		Instantiate(GenerateCube(), new Vector3(1 * BlockLength,0,0), 	new Quaternion(), this.transform);										//Right cube
-		Instantiate(GenerateCube(), new Vector3(-1 * BlockLength,0,0), 	new Quaternion(), this.transform);										//Left cube
+		Instantiate(GenerateCube(), new Vector3(1 * BlockLength,0,0),  Quaternion.identity, this.transform);										//Right cube
+		Instantiate(GenerateCube(), new Vector3(-1 * BlockLength,0,0), Quaternion.identity, this.transform);										//Left cube
 
-		Instantiate(GenerateCube(), new Vector3(0,0,1 * BlockLength), 	new Quaternion(), this.transform);										//forward
-		Instantiate(GenerateCube(), new Vector3(0,0,-1 * BlockLength), 	new Quaternion(), this.transform);										//Backward
+		Instantiate(GenerateCube(), new Vector3(0,0,1 * BlockLength),  Quaternion.identity, this.transform);										//forward
+		Instantiate(GenerateCube(), new Vector3(0,0,-1 * BlockLength), Quaternion.identity, this.transform);										//Backward
 	}
 
 	private void FillTop(){
-		Instantiate(GenerateCube(), new Vector3(1 * BlockLength,1 * BlockLength,0), 					new Quaternion(), this.transform);		//Up cube
-		Instantiate(GenerateCube(), new Vector3(-1 * BlockLength,1 * BlockLength,0), 					new Quaternion(), this.transform);		//Up cube
+		Instantiate(GenerateCube(), new Vector3(1 * BlockLength,1 * BlockLength,0),                     Quaternion.identity, this.transform);		//Up cube
+		Instantiate(GenerateCube(), new Vector3(-1 * BlockLength,1 * BlockLength,0),                    Quaternion.identity, this.transform);		//Up cube
 
-		Instantiate(GenerateCube(), new Vector3(0 ,1 * BlockLength,1 * BlockLength), 					new Quaternion(), this.transform);		//Up cube
-		Instantiate(GenerateCube(), new Vector3(0 ,1 * BlockLength,-1 * BlockLength), 					new Quaternion(), this.transform);		//Up cube
+		Instantiate(GenerateCube(), new Vector3(0 ,1 * BlockLength,1 * BlockLength),                    Quaternion.identity, this.transform);		//Up cube
+		Instantiate(GenerateCube(), new Vector3(0 ,1 * BlockLength,-1 * BlockLength),                   Quaternion.identity, this.transform);		//Up cube
 
-		Instantiate(GenerateCube(), new Vector3(1 * BlockLength ,1 * BlockLength, 1 * BlockLength), 	new Quaternion(), this.transform);		//Up cube
-		Instantiate(GenerateCube(), new Vector3(-1 * BlockLength ,1 * BlockLength, 1 * BlockLength),	new Quaternion(), this.transform);		//Up cube
+		Instantiate(GenerateCube(), new Vector3(1 * BlockLength ,1 * BlockLength, 1 * BlockLength),     Quaternion.identity, this.transform);		//Up cube
+		Instantiate(GenerateCube(), new Vector3(-1 * BlockLength ,1 * BlockLength, 1 * BlockLength),    Quaternion.identity, this.transform);		//Up cube
 
-		Instantiate(GenerateCube(), new Vector3(1 * BlockLength ,1 * BlockLength, -1 * BlockLength), 	new Quaternion(), this.transform);		//Up cube
-		Instantiate(GenerateCube(), new Vector3(-1 * BlockLength ,1 * BlockLength, -1 * BlockLength), 	new Quaternion(), this.transform);		//Up cube
+		Instantiate(GenerateCube(), new Vector3(1 * BlockLength ,1 * BlockLength, -1 * BlockLength),    Quaternion.identity, this.transform);		//Up cube
+		Instantiate(GenerateCube(), new Vector3(-1 * BlockLength ,1 * BlockLength, -1 * BlockLength),   Quaternion.identity, this.transform);		//Up cube
 
 	}
 
 	private void FillBottom(){
-		Instantiate(GenerateCube(), new Vector3(1 * BlockLength,-1 * BlockLength,0), 					new Quaternion(), this.transform);		//Up cube
-		Instantiate(GenerateCube(), new Vector3(-1 * BlockLength,-1 * BlockLength,0), 					new Quaternion(), this.transform);		//Up cube
+		Instantiate(GenerateCube(), new Vector3(1 * BlockLength,-1 * BlockLength,0),                    Quaternion.identity, this.transform);		//Up cube
+		Instantiate(GenerateCube(), new Vector3(-1 * BlockLength,-1 * BlockLength,0),                   Quaternion.identity, this.transform);		//Up cube
 
-		Instantiate(GenerateCube(), new Vector3(0 ,-1 * BlockLength,1 * BlockLength), 					new Quaternion(), this.transform);		//Up cube
-		Instantiate(GenerateCube(), new Vector3(0 ,-1 * BlockLength,-1 * BlockLength), 					new Quaternion(), this.transform);		//Up cube
+		Instantiate(GenerateCube(), new Vector3(0 ,-1 * BlockLength,1 * BlockLength),                   Quaternion.identity, this.transform);		//Up cube
+		Instantiate(GenerateCube(), new Vector3(0 ,-1 * BlockLength,-1 * BlockLength),                  Quaternion.identity, this.transform);		//Up cube
 
-		Instantiate(GenerateCube(), new Vector3(1 * BlockLength ,-1 * BlockLength, 1 * BlockLength), 	new Quaternion(), this.transform);		//Up cube
-		Instantiate(GenerateCube(), new Vector3(-1 * BlockLength ,-1 * BlockLength, 1 * BlockLength),	new Quaternion(), this.transform);		//Up cube
+		Instantiate(GenerateCube(), new Vector3(1 * BlockLength ,-1 * BlockLength, 1 * BlockLength),    Quaternion.identity, this.transform);		//Up cube
+		Instantiate(GenerateCube(), new Vector3(-1 * BlockLength ,-1 * BlockLength, 1 * BlockLength),   Quaternion.identity, this.transform);		//Up cube
 
-		Instantiate(GenerateCube(), new Vector3(1 * BlockLength ,-1 * BlockLength, -1 * BlockLength), 	new Quaternion(), this.transform);		//Up cube
-		Instantiate(GenerateCube(), new Vector3(-1 * BlockLength ,-1 * BlockLength, -1 * BlockLength), 	new Quaternion(), this.transform);		//Up cube
+		Instantiate(GenerateCube(), new Vector3(1 * BlockLength ,-1 * BlockLength, -1 * BlockLength),   Quaternion.identity, this.transform);		//Up cube
+		Instantiate(GenerateCube(), new Vector3(-1 * BlockLength ,-1 * BlockLength, -1 * BlockLength),  Quaternion.identity, this.transform);		//Up cube
 
 	}
 
 	private void FillSides(){
-		Instantiate(GenerateCube(), new Vector3( 1 * BlockLength, 0 , 1 * BlockLength), 					new Quaternion(), this.transform);		//Up cube
-		Instantiate(GenerateCube(), new Vector3(-1 * BlockLength, 0 , 1 * BlockLength), 					new Quaternion(), this.transform);		//Up cube
+		Instantiate(GenerateCube(), new Vector3( 1 * BlockLength, 0 , 1 * BlockLength),                     Quaternion.identity, this.transform);		//Up cube
+		Instantiate(GenerateCube(), new Vector3(-1 * BlockLength, 0 , 1 * BlockLength),                     Quaternion.identity, this.transform);		//Up cube
 
-		Instantiate(GenerateCube(), new Vector3( 1 * BlockLength, 0 ,-1 * BlockLength), 					new Quaternion(), this.transform);		//Up cube
-		Instantiate(GenerateCube(), new Vector3(-1 * BlockLength, 0 ,-1 * BlockLength), 					new Quaternion(), this.transform);		//Up cube
+		Instantiate(GenerateCube(), new Vector3( 1 * BlockLength, 0 ,-1 * BlockLength),                     Quaternion.identity, this.transform);		//Up cube
+		Instantiate(GenerateCube(), new Vector3(-1 * BlockLength, 0 ,-1 * BlockLength),                     Quaternion.identity, this.transform);		//Up cube
 
 	}
 
 	private void PickStart(){
 		GameObject[] Cubes = GameObject.FindGameObjectsWithTag("Cube");
 		GameObject ChosenCube = Cubes[Random.Range(0, Cubes.Length - 1)];
-		Instantiate(GetUsed(), ChosenCube.transform.position, 	new Quaternion(), this.transform);              //Up cube
+		Instantiate(GetUsed(), ChosenCube.transform.position, Quaternion.identity, this.transform);              //Up cube
         Destroy(ChosenCube);
     }
 
@@ -114,7 +115,7 @@ public class PuzzleGenerationBehavior : MonoBehaviour {
 	}
 
 	private int GenerateSeed(){
-		int Seed = (int)Random.Range(-1000, 1000);
+		Seed = (int)Random.Range(-1000, 1000);
 		if(DEBUG) Debug.Log("Seed value : " + Seed);															//For testing, print out the seed
 		return Seed;
 	}
