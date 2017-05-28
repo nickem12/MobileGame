@@ -14,13 +14,17 @@ public class UIButtonFunctions : MonoBehaviour {
     Vector3 startingPos;
     Vector3 endPos;
     private float timer = .7f;
+    public bool startedGame;        // used for animating the logo at the start
+    private GameObject GyroControls;
+
     // Use this for initialization
     void Start () {
         theCanvas = GameObject.FindGameObjectWithTag("Canvas");
         theCamera = GameObject.FindGameObjectWithTag("MainCamera");
         lockingCanvas = GameObject.FindGameObjectWithTag("LockingCanvas");
+        GyroControls = GameObject.FindGameObjectWithTag("GyroControls");
         startingPos = theCamera.transform.position;
-        endPos = new Vector3(0, 0, -13.2f);
+        endPos = new Vector3(0, 0, -17.2f);
     }
 	
 	// Update is called once per frame
@@ -39,8 +43,10 @@ public class UIButtonFunctions : MonoBehaviour {
     public void NewGame()
     {
         theCanvas.GetComponent<Canvas>().enabled = false;
-        lockingCanvas.GetComponent<Canvas>().enabled = true;
+        //lockingCanvas.GetComponent<Canvas>().enabled = true;
+       // GyroControls.GetComponent<GyroControl>().EnableGyro();
         moveCameraTrigger = true;
+        startedGame = true;
     }
 
     public void MoveCamera()

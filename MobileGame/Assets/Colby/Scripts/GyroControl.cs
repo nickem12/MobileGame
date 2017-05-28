@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GyroControl : MonoBehaviour {
+public class GyroControl : MonoBehaviour
+{
     public bool gyroEnabled;
     private Gyroscope gyro;
     public GameObject Cube;
@@ -34,7 +35,7 @@ public class GyroControl : MonoBehaviour {
         ourAngle = 0.0f;
     }
 
-    private bool EnableGyro()
+    public bool EnableGyro()
     {
         if (SystemInfo.supportsGyroscope)
         {
@@ -43,8 +44,10 @@ public class GyroControl : MonoBehaviour {
 
             rotation = new Quaternion(0, 0, 1, 0);
 
+            Debug.Log("gyro is enabled");
             return true;
         }
+        Debug.Log("gyro is not enabled");
         return false;
     }
 
@@ -71,42 +74,41 @@ public class GyroControl : MonoBehaviour {
         if (gyroEnabled)
         {
 
-            if (Cube.transform.eulerAngles.y < 267f)
+            //if (Cube.transform.eulerAngles.y < 267f)
+            //{
+            if (gyro.attitude.x > .2f)
             {
-
-                if (gyro.attitude.x > .2f)
-                {
-                   // Debug.Log("Cube y rotating right ");
-                    Cube.transform.Rotate(Vector3.up * gyro.attitude.x * Time.deltaTime * speed);
-                   // theCamera.transform.RotateAround(Vector3.zero, Vector3.up, -gyro.attitude.x * Time.deltaTime * speed);
-                    //theCamera.transform.LookAt(Vector3.zero);
-                   // Debug.Log("cube y rotation from right" + Cube.transform.eulerAngles.y);
-                }
-
+                // Debug.Log("Cube y rotating right ");
+                Cube.transform.Rotate(Vector3.up * gyro.attitude.x * Time.deltaTime * speed);
+                // theCamera.transform.RotateAround(Vector3.zero, Vector3.up, -gyro.attitude.x * Time.deltaTime * speed);
+                //theCamera.transform.LookAt(Vector3.zero);
+                // Debug.Log("cube y rotation from right" + Cube.transform.eulerAngles.y);
             }
 
+            //}
 
-            if (Cube.transform.eulerAngles.y > 3f)
+
+            /// if (Cube.transform.eulerAngles.y > 3f)
+            /// {
+
+            if (gyro.attitude.x < -.2f)
             {
-
-                if (gyro.attitude.x < -.2f)
-                {
-                   // Debug.Log("Cube y rotating left ");
-                    Cube.transform.Rotate(Vector3.up * gyro.attitude.x * Time.deltaTime * speed);
-                    //theCamera.transform.RotateAround(Vector3.zero, Vector3.up, -gyro.attitude.x * Time.deltaTime * speed);
-                    //theCamera.transform.LookAt(Vector3.zero);
-                   // Debug.Log("cube y rotation from left" + Cube.transform.eulerAngles.y);
-                }
+                // Debug.Log("Cube y rotating left ");
+                Cube.transform.Rotate(Vector3.up * gyro.attitude.x * Time.deltaTime * speed);
+                //theCamera.transform.RotateAround(Vector3.zero, Vector3.up, -gyro.attitude.x * Time.deltaTime * speed);
+                //theCamera.transform.LookAt(Vector3.zero);
+                // Debug.Log("cube y rotation from left" + Cube.transform.eulerAngles.y);
             }
+            /// }
 
 
 
             if (ourAngle < 87f)
             {
-                if(gyro.attitude.y > .2f)
+                if (gyro.attitude.y > .08f)
                 {
                     ourAngle += gyro.attitude.y * Time.deltaTime * verticalSpeed;
-                    
+
                     Debug.Log("ourAngle " + ourAngle);
                     // Debug.Log("Camera roation x going up " + theCamera.transform.eulerAngles.x);
                     theCamera.transform.RotateAround(Vector3.zero, Vector3.right, gyro.attitude.y * Time.deltaTime * verticalSpeed);
@@ -126,20 +128,11 @@ public class GyroControl : MonoBehaviour {
                     theCamera.transform.RotateAround(Vector3.zero, Vector3.right, gyro.attitude.y * Time.deltaTime * verticalSpeed);
                     theCamera.transform.LookAt(Vector3.zero);
                 }
+
             }
-            //if (gyro.attitude.y > .1f)
-            //{
-            //    Cube.transform.Rotate(Vector3.right * Time.deltaTime * speed);
-            //}
-            //if (gyro.attitude.y < -.1f)
-            //{
-            //    Cube.transform.Rotate(Vector3.right * Time.deltaTime * -speed);
-            //}
-            //Cube.transform.rotation = gyro.attitude;
+
 
         }
 
-       
     }
-
 }
