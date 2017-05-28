@@ -15,7 +15,9 @@ public class PuzzleGenerationBehavior : MonoBehaviour {
 
     public int Seed;
 
+    private GameObject ChosenCube;
 
+    
 	void Start () {
 		GeneratePuzzle(Seed);																			//Generate a level
 	}
@@ -28,6 +30,10 @@ public class PuzzleGenerationBehavior : MonoBehaviour {
 				GeneratePuzzle(GenerateSeed());																		//Generate a world based on a generate seed
 			}
 		}
+        if(ChosenCube != null)
+        {
+            Destroy(ChosenCube);
+        }
 	}
 
 
@@ -93,7 +99,7 @@ public class PuzzleGenerationBehavior : MonoBehaviour {
 
 	private void PickStart(){
 		GameObject[] Cubes = GameObject.FindGameObjectsWithTag("Cube");
-		GameObject ChosenCube = Cubes[Random.Range(0, Cubes.Length - 1)];
+		ChosenCube = Cubes[Random.Range(0, Cubes.Length - 1)];
 		Instantiate(GetUsed(), ChosenCube.transform.position, Quaternion.identity, this.transform);              //Up cube
         Destroy(ChosenCube);
     }
