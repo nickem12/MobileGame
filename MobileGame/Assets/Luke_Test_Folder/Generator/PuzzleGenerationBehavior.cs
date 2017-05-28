@@ -119,7 +119,7 @@ public class PuzzleGenerationBehavior : MonoBehaviour {
 		return Seed;
 	}
 
-	private void DeleteCubes(){
+	public void DeleteCubes(){
 		GameObject[] Cubes = GameObject.FindGameObjectsWithTag("Cube");
 		for(int CurBlock = Cubes.Length - 1; CurBlock >= 0; CurBlock--){
 			Destroy(Cubes[CurBlock]);
