@@ -76,7 +76,7 @@ public class GyroControl : MonoBehaviour
 
             //if (Cube.transform.eulerAngles.y < 267f)
             //{
-            if (gyro.attitude.x > .2f)
+            if (gyro.attitude.x > .3f)
             {
                 // Debug.Log("Cube y rotating right ");
                 Cube.transform.Rotate(Vector3.up * gyro.attitude.x * Time.deltaTime * speed);
@@ -91,7 +91,7 @@ public class GyroControl : MonoBehaviour
             /// if (Cube.transform.eulerAngles.y > 3f)
             /// {
 
-            if (gyro.attitude.x < -.2f)
+            if (gyro.attitude.x < -.3f)
             {
                 // Debug.Log("Cube y rotating left ");
                 Cube.transform.Rotate(Vector3.up * gyro.attitude.x * Time.deltaTime * speed);
@@ -105,7 +105,7 @@ public class GyroControl : MonoBehaviour
 
             if (ourAngle < 87f)
             {
-                if (gyro.attitude.y > .08f)
+                if (gyro.attitude.y > .1f)
                 {
                     ourAngle += gyro.attitude.y * Time.deltaTime * verticalSpeed;
 
