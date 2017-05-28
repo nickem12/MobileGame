@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour {
             GetInitialOpenCubes();
             getCubeRemaining = false;
         }
+
         if (cubeRemaining == 0)
         {
             win = true;
@@ -39,11 +40,12 @@ public class GameManager : MonoBehaviour {
         else win = false;
 
 
+
         if (win)
         {
             this.transform.GetChild(0).gameObject.SetActive(true);
         }
-        else this.transform.GetChild(0).gameObject.SetActive(false);
+        //else this.transform.GetChild(0).gameObject.SetActive(false);
 
 
         if(lerpToBeginingTrigger)

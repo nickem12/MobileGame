@@ -43,7 +43,7 @@ public class ChangeCubeState : MonoBehaviour {
 
                         objectHit.transform.GetChild(0).gameObject.GetComponent<Renderer>().material = mat;
                         objectHit.transform.GetComponent<CubeData>().SetCubeState(CubeState.Current);
-                        SetupUsedDecor();
+                        SetupUsedDecor(objectHit.transform.GetChild(0).gameObject);
 
                         currentCube.GetComponent<CubeData>().SetCubeState(CubeState.Passed);
 
@@ -85,6 +85,6 @@ public class ChangeCubeState : MonoBehaviour {
     private void SetupUsedDecor(GameObject HitCube){
     	HitCube.AddComponent<Decor_Generation>();
 		HitCube.GetComponent<Decor_Generation>().DecorOptions = DecorItems;
-		HitCube.GetComponent<Decor_Generation>().DecorChance = 7.0f;
+		HitCube.GetComponent<Decor_Generation>().DecorChance = 7;
     }
 }
