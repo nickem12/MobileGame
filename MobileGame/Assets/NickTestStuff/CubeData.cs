@@ -14,6 +14,8 @@ public class CubeData : MonoBehaviour {
     public float CubeLength;
     bool setAdjacent = true;
     public bool start = false;
+
+    public bool isCore;
 	// Use this for initialization
 	void Awake () {
 

@@ -1,11 +1,11 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Luke_Test_Folder\Generator\PuzzleGenerationBehavior.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\NickTestStuff\ChangeCubeState.cs">
     <Files>
-      <File FileName="Assets\Luke_Test_Folder\Generator\PuzzleGenerationBehavior.cs" Line="44" Column="106" />
-      <File FileName="Assets\Luke_Test_Folder\Generator\Blocks2\myCellShader.shader" Line="1" Column="1" />
-      <File FileName="Assets\Decor_Generation.cs" Line="1" Column="1" />
-      <File FileName="Assets\NickTestStuff\CubeData.cs" Line="1" Column="1" />
+      <File FileName="Assets\Luke_Test_Folder\Generator\PuzzleGenerationBehavior.cs" Line="105" Column="27" />
+      <File FileName="Assets\Luke_Test_Folder\Generator\Decor_Generation.cs" Line="31" Column="103" />
+      <File FileName="Assets\NickTestStuff\CubeData.cs" Line="17" Column="5" />
+      <File FileName="Assets\NickTestStuff\ChangeCubeState.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
