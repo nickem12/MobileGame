@@ -13,6 +13,8 @@ public class ChangeCubeState : MonoBehaviour {
     GameObject gameManager;
     public AudioSource Space_Boop;
 
+    public GameObject[] DecorItems;
+
 	// Use this for initialization
 	void Start () {
 
@@ -40,8 +42,8 @@ public class ChangeCubeState : MonoBehaviour {
                         Debug.Log(objectHit.transform.tag);
 
                         objectHit.transform.GetChild(0).gameObject.GetComponent<Renderer>().material = mat;
-
                         objectHit.transform.GetComponent<CubeData>().SetCubeState(CubeState.Current);
+                        SetupUsedDecor();
 
                         currentCube.GetComponent<CubeData>().SetCubeState(CubeState.Passed);
 
@@ -78,5 +80,11 @@ public class ChangeCubeState : MonoBehaviour {
             }
         }
         return false;
+    }
+
+    private void SetupUsedDecor(GameObject HitCube){
+    	HitCube.AddComponent<Decor_Generation>();
+		HitCube.GetComponent<Decor_Generation>().DecorOptions = DecorItems;
+		HitCube.GetComponent<Decor_Generation>().DecorChance = 7.0f;
     }
 }
