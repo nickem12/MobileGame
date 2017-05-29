@@ -6,6 +6,7 @@ public class UIButtonFunctions : MonoBehaviour {
 
     private GameObject theCanvas;
     private GameObject lockingCanvas;
+    private GameObject RestartButtonCanvas;
     private GameObject theCamera;
     public GameObject gyroControls;
     private Quaternion holdRotation;
@@ -17,6 +18,7 @@ public class UIButtonFunctions : MonoBehaviour {
     public bool startedGame;        // used for animating the logo at the start
     private GameObject GyroControls;
     private GameObject LogoPanel;
+    private GameObject HowToScreen;
 
     // Use this for initialization
     void Start () {
@@ -25,6 +27,9 @@ public class UIButtonFunctions : MonoBehaviour {
         lockingCanvas = GameObject.FindGameObjectWithTag("LockingCanvas");
         GyroControls = GameObject.FindGameObjectWithTag("GyroControls");
         LogoPanel = GameObject.FindGameObjectWithTag("LogoPanel");
+        RestartButtonCanvas = GameObject.FindGameObjectWithTag("RestartButtonCanvas");
+        HowToScreen = GameObject.FindGameObjectWithTag("HowToScreen");
+
         startingPos = theCamera.transform.position;
         endPos = new Vector3(0f, 0f, -22f);
     }
@@ -50,6 +55,7 @@ public class UIButtonFunctions : MonoBehaviour {
         moveCameraTrigger = true;
         startedGame = true;
         LogoPanel.GetComponent<LogoAnimation>().TriggerFloatUp();
+        RestartButtonCanvas.GetComponent<Canvas>().enabled = true;
     }
 
     public void MoveCamera()
@@ -58,16 +64,18 @@ public class UIButtonFunctions : MonoBehaviour {
         
     }
 
-    public void LockRotation()
+    public void ToHowToScreen()
     {
-        if(gyroControls.GetComponent<GyroControl>().gyroEnabled == true)
-        {
-            gyroControls.GetComponent<GyroControl>().gyroEnabled = false;
-        }
-        else
-        {
-            gyroControls.GetComponent<GyroControl>().gyroEnabled = true;
-            
-        }
+        theCanvas.GetComponent<Canvas>().enabled = false;
+        HowToScreen.GetComponent<Canvas>().enabled = true;
+        LogoPanel.GetComponent<SpriteRenderer>().enabled = false;
+        
+    }
+
+    public void BackToMainScreen()
+    {
+        theCanvas.GetComponent<Canvas>().enabled = true;
+        HowToScreen.GetComponent<Canvas>().enabled = false;
+        LogoPanel.GetComponent<SpriteRenderer>().enabled = true;
     }
 }
