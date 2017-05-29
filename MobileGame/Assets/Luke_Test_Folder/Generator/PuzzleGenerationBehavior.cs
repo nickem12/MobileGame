@@ -20,7 +20,7 @@ public class PuzzleGenerationBehavior : MonoBehaviour {
 
     
 	void Start () {
-		GeneratePuzzle(GenerateSeed());																			//Generate a level
+		GeneratePuzzle(GenerateSeed());																											//Generate a level
 	}
 	
 
@@ -28,7 +28,7 @@ public class PuzzleGenerationBehavior : MonoBehaviour {
 		if(DEBUG){
 			if(Input.GetKeyDown(KeyCode.G)){
 				DeleteCubes();
-				GeneratePuzzle(GenerateSeed());																		//Generate a world based on a generate seed
+				GeneratePuzzle(Seed);																											//Generate a world based on a generate seed
 			}
 		}
         if(ChosenCube != null)
