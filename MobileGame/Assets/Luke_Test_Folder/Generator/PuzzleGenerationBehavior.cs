@@ -14,12 +14,13 @@ public class PuzzleGenerationBehavior : MonoBehaviour {
 	public bool DEBUG;
 
     public int Seed;
+    public GameObject Ship;
 
     private GameObject ChosenCube;
 
     
 	void Start () {
-		GeneratePuzzle(Seed);																			//Generate a level
+		GeneratePuzzle(GenerateSeed());																											//Generate a level
 	}
 	
 
@@ -27,7 +28,7 @@ public class PuzzleGenerationBehavior : MonoBehaviour {
 		if(DEBUG){
 			if(Input.GetKeyDown(KeyCode.G)){
 				DeleteCubes();
-				GeneratePuzzle(GenerateSeed());																		//Generate a world based on a generate seed
+				GeneratePuzzle(Seed);																											//Generate a world based on a generate seed
 			}
 		}
         if(ChosenCube != null)
@@ -56,6 +57,10 @@ public class PuzzleGenerationBehavior : MonoBehaviour {
 
 		Instantiate(GenerateCube(), new Vector3(0,0,1 * BlockLength),  Quaternion.identity, this.transform);										//forward
 		Instantiate(GenerateCube(), new Vector3(0,0,-1 * BlockLength), Quaternion.identity, this.transform);										//Backward
+
+		GameObject Core = Instantiate(ImpassableBlocks[Random.Range(0, ImpassableBlocks.Length - 1)], this.transform.position, Quaternion.identity, this.transform);	//This is the core. No gameplay mechanics as to why we need it, need
+		Core.GetComponent<Decor_Generation>().enabled = false;																																				//it for a quick fix for the ship, otherwise will spawn inside planet.
+		Core.GetComponent<CubeData>().isCore = true;
 	}
 
 	private void FillTop(){
@@ -99,9 +104,14 @@ public class PuzzleGenerationBehavior : MonoBehaviour {
 
 	private void PickStart(){
 		GameObject[] Cubes = GameObject.FindGameObjectsWithTag("Cube");
-		ChosenCube = Cubes[Random.Range(0, Cubes.Length - 1)];
-		Instantiate(GetUsed(), ChosenCube.transform.position, Quaternion.identity, this.transform);              //Up cube
+
+		do{
+			ChosenCube = Cubes[Random.Range(0, Cubes.Length - 1)];
+		}while(ChosenCube.GetComponent<CubeData>().isCore);
+
+		GameObject Start = Instantiate(GetUsed(), ChosenCube.transform.position, Quaternion.identity, this.transform);              //Up cube
         Destroy(ChosenCube);
+        SetShip(Start);
     }
 
 	private GameObject GenerateCube(){
@@ -131,6 +141,60 @@ public class PuzzleGenerationBehavior : MonoBehaviour {
 		for(int CurBlock = Cubes.Length - 1; CurBlock >= 0; CurBlock--){
 			Destroy(Cubes[CurBlock]);
 		}
+	}
+
+	public void SetShip(GameObject StartCube){
+		GameObject[] AllCubes = GameObject.FindGameObjectsWithTag("Cube");
+		Vector3 Dir = Vector3.zero;
+		Vector3 Rotation = Vector3.zero;
+
+
+		for(int CurrentDirection = 0; CurrentDirection < 6; CurrentDirection++){
+
+			switch(CurrentDirection){
+				case 0:
+					Dir = Vector3.forward;
+					Rotation = new Vector3(90.0f, 0.0f, 0.0f);
+					break;
+				case 1:
+					Dir = Vector3.back;
+					Rotation = new Vector3(-90.0f, 0.0f, 0.0f);
+					break;
+				case 2:
+					Dir = Vector3.up;
+					Rotation = new Vector3(0.0f, 0.0f, 0.0f);
+					break;
+				case 3:
+					Dir = Vector3.down;
+					Rotation = new Vector3(180.0f, 0.0f, 0.0f);
+					break;
+				case 4:
+					Dir = Vector3.left;
+					Rotation = new Vector3(0.0f, 0.0f, -90.0f);
+					break;
+				case 5:
+					Dir = Vector3.right;
+					Rotation = new Vector3(0.0f, 0.0f, 90.0f);
+					break;
+			}
+			bool DirClear = true;
+
+			foreach(GameObject CurCube in AllCubes){
+				if(CurCube.transform.position == StartCube.transform.position + (Dir * BlockLength)) DirClear = false;
+			}
+
+			if(DirClear){
+				CreateShip(StartCube.transform.position + (Dir * BlockLength * 0.5f), Rotation, StartCube); 
+				break;
+			}
+		}
+
+	}
+
+	private void CreateShip(Vector3 position, Vector3 Rotation, GameObject StartCube){
+		Quaternion Rot = new Quaternion();
+		Rot.eulerAngles = Rotation;
+		Instantiate(Ship, position, Rot, StartCube.transform);
 	}
 
 }

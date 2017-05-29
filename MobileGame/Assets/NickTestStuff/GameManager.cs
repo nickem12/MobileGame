@@ -11,10 +11,18 @@ public class GameManager : MonoBehaviour {
     float resetTimer = 2f;
 
     public Material mat;
+    private GameObject theCamera;
+    private Vector3 beginingPos;
+    private bool lerpToBeginingTrigger;
+    private float timer;
+    private float speed;
 
     void Start()
     {
-        
+        theCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        beginingPos = new Vector3(0, 0, 48.788f);
+        timer = 3f;
+        speed = 2f;
     }
     // Update is called once per frame
     void Update () {
@@ -24,6 +32,7 @@ public class GameManager : MonoBehaviour {
             GetInitialOpenCubes();
             getCubeRemaining = false;
         }
+
         if (cubeRemaining == 0)
         {
             win = true;
@@ -31,11 +40,24 @@ public class GameManager : MonoBehaviour {
         else win = false;
 
 
+
         if (win)
         {
             this.transform.GetChild(0).gameObject.SetActive(true);
         }
-        else this.transform.GetChild(0).gameObject.SetActive(false);
+        //else this.transform.GetChild(0).gameObject.SetActive(false);
+
+
+        if(lerpToBeginingTrigger)
+        {
+            theCamera.transform.position = Vector3.Lerp(theCamera.transform.position, beginingPos, Time.deltaTime);
+            timer -= Time.deltaTime;
+            if(timer <= 0)
+            {
+                lerpToBeginingTrigger = false;
+            }
+        }
+
 	}
     public void GetInitialOpenCubes()
     {
@@ -56,6 +78,8 @@ public class GameManager : MonoBehaviour {
         puzzle.GetComponent<PuzzleGenerationBehavior>().DeleteCubes();
         puzzle.GetComponent<PuzzleGenerationBehavior>().GeneratePuzzle((int)Random.Range(-1000, 1000));
         getCubeRemaining = true;
+
+        lerpToBeginingTrigger = true;
     }
 
     public void RestartLevel()
@@ -80,5 +104,6 @@ public class GameManager : MonoBehaviour {
             }
         }
         getCubeRemaining = true;
+
     }
 }

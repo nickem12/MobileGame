@@ -76,6 +76,12 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Colby\Scripts\AxisScript.cs" />
@@ -85,7 +91,7 @@
     <Compile Include="Assets\Colby\Scripts\LogoAnimation.cs" />
     <Compile Include="Assets\Colby\Scripts\ScreenRotation.cs" />
     <Compile Include="Assets\Colby\Scripts\UIButtonFunctions.cs" />
-    <Compile Include="Assets\Decor_Generation.cs" />
+    <Compile Include="Assets\Luke_Test_Folder\Generator\Decor_Generation.cs" />
     <Compile Include="Assets\Luke_Test_Folder\Generator\PuzzleGenerationBehavior.cs" />
     <Compile Include="Assets\NickTestStuff\ChangeCubeState.cs" />
     <Compile Include="Assets\NickTestStuff\CubeData.cs" />
